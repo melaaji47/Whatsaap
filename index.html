@@ -1,112 +1,320 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Video Call</title>
+<title>Video Chat Room</title>
 
-<!-- PREVIEW (WA / FB / TELEGRAM) -->
-<meta property="og:title" content="Video Call Incoming...">
-<meta property="og:description" content="Tap to connect video call now">
-<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHj4AIumCdPr0QuS1UhrmanogiH8KpgAJrotwjdf3hIZsa0n7ikMF3p1kI1bburqX7aHVTAI3NgKBNuvNT9BoQxN7y8F2R8VuKFBoqrDEjXM6XzHLN1EWiLuUzyKTDn3FHMpVQAUU6bFSTlnA-ucCTXDhw2pIOQgWO4q8xiYXd5J6hzu0pk8fCaC4c9Nlc/s740/circle-whatsapp-logotype-icon-social-media-app-network-application-popular-editorial-brand-vector-illustration_913857-391.jpg">
-<meta property="og:type" content="website">
+<!-- Open Graph -->
+<meta property="og:title" content="Join Video Chat Room" />
+<meta property="og:description" content="Tap to enter the video room" />
+<meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHj4AIumCdPr0QuS1UhrmanogiH8KpgAJrotwjdf3hIZsa0n7ikMF3p1kI1bburqX7aHVTAI3NgKBNuvNT9BoQxN7y8F2R8VuKFBoqrDEjXM6XzHLN1EWiLuUzyKTDn3FHMpVQAUU6bFSTlnA-ucCTXDhw2pIOQgWO4q8xiYXd5J6hzu0pk8fCaC4c9Nlc/s740/circle-whatsapp-logotype-icon-social-media-app-network-application-popular-editorial-brand-vector-illustration_913857-391.jpg" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
 
-<!-- Optional biar lebih mantap -->
-<meta name="twitter:card" content="summary_large_image">
-
-<link rel="icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHj4AIumCdPr0QuS1UhrmanogiH8KpgAJrotwjdf3hIZsa0n7ikMF3p1kI1bburqX7aHVTAI3NgKBNuvNT9BoQxN7y8F2R8VuKFBoqrDEjXM6XzHLN1EWiLuUzyKTDn3FHMpVQAUU6bFSTlnA-ucCTXDhw2pIOQgWO4q8xiYXd5J6hzu0pk8fCaC4c9Nlc/s740/circle-whatsapp-logotype-icon-social-media-app-network-application-popular-editorial-brand-vector-illustration_913857-391.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-    body {
-        margin: 0;
-        background: #000;
-        font-family: Arial, sans-serif;
-        color: #fff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top left, rgba(37, 211, 102, 0.15), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(0, 255, 255, 0.12), transparent 30%),
+        #050505;
+    color: white;
+    padding: 20px;
+}
+
+.bg-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: #25D366;
+    filter: blur(120px);
+    opacity: 0.18;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 380px;
+    padding: 35px 28px;
+    border-radius: 28px;
+    backdrop-filter: blur(14px);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+    text-align: center;
+    animation: fadeUp 0.9s ease;
+}
+
+.logo-wrap {
+    position: relative;
+    display: inline-flex;
+    margin-bottom: 20px;
+}
+
+.logo-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 2px solid rgba(37,211,102,0.4);
+    animation: pulse 2s infinite;
+}
+
+.logo {
+    width: 110px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.12);
+}
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(37,211,102,0.12);
+    border: 1px solid rgba(37,211,102,0.25);
+    border-radius: 999px;
+    margin-bottom: 16px;
+    font-size: 13px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #25D366;
+    animation: blink 1s infinite;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 28px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    margin-bottom: 14px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.primary {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #25D366,
+        #00e5ff,
+        #7b61ff,
+        #25D366
+    );
+    background-size: 300% 300%;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow:
+        0 0 12px rgba(0,229,255,0.35),
+        0 0 24px rgba(123,97,255,0.25),
+        0 0 40px rgba(37,211,102,0.25);
+    animation: hologramFlow 5s ease infinite;
+}
+
+.primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255,255,255,0.35) 50%,
+        transparent 80%
+    );
+    transform: translateX(-120%);
+    animation: hologramShine 2.8s linear infinite;
+}
+
+.primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.04),
+        rgba(255,255,255,0.04) 2px,
+        transparent 2px,
+        transparent 4px
+    );
+    opacity: 0.35;
+    mix-blend-mode: screen;
+    pointer-events: none;
+}
+
+@keyframes hologramFlow {
+    0% {
+        background-position: 0% 50%;
+        transform: translateY(0px);
     }
 
-    .container {
-        text-align: center;
-        width: 90%;
-        max-width: 320px;
+    50% {
+        background-position: 100% 50%;
+        transform: translateY(-1px);
     }
 
-    .logo {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        margin-bottom: 20px;
+    100% {
+        background-position: 0% 50%;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes hologramShine {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+    100% {
+        transform: translateX(100%) rotate(25deg);
+    }
+}
+
+.secondary {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.footer {
+    margin-top: 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.12);
+        opacity: 0;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        padding: 28px 22px;
     }
 
     h1 {
-        font-size: 22px;
-        margin-bottom: 30px;
+        font-size: 24px;
     }
-
-    .btn {
-        display: block;
-        width: 100%;
-        padding: 14px;
-        margin: 10px 0;
-        border-radius: 30px;
-        text-decoration: none;
-        color: #fff;
-        font-weight: bold;
-        background: #25D366;
-        opacity: 0;
-    }
-
-    /* Animasi ringan */
-    .left {
-        transform: translateX(-100px);
-        animation: slideLeft 0.6s ease forwards;
-    }
-
-    .right {
-        transform: translateX(100px);
-        animation: slideRight 0.6s ease forwards;
-    }
-
-    .delay1 { animation-delay: 0.3s; }
-    .delay2 { animation-delay: 0.6s; }
-
-    @keyframes slideLeft {
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    @keyframes slideRight {
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-
-    .btn:active {
-        transform: scale(0.97);
-    }
-
+}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="bg-glow"></div>
 
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHj4AIumCdPr0QuS1UhrmanogiH8KpgAJrotwjdf3hIZsa0n7ikMF3p1kI1bburqX7aHVTAI3NgKBNuvNT9BoQxN7y8F2R8VuKFBoqrDEjXM6XzHLN1EWiLuUzyKTDn3FHMpVQAUU6bFSTlnA-ucCTXDhw2pIOQgWO4q8xiYXd5J6hzu0pk8fCaC4c9Nlc/s740/circle-whatsapp-logotype-icon-social-media-app-network-application-popular-editorial-brand-vector-illustration_913857-391.jpg" class="logo">
+<div class="card">
 
-    <h1>Video Call ✔️</h1>
+    <div class="logo-wrap">
+        <img
+            src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHj4AIumCdPr0QuS1UhrmanogiH8KpgAJrotwjdf3hIZsa0n7ikMF3p1kI1bburqX7aHVTAI3NgKBNuvNT9BoQxN7y8F2R8VuKFBoqrDEjXM6XzHLN1EWiLuUzyKTDn3FHMpVQAUU6bFSTlnA-ucCTXDhw2pIOQgWO4q8xiYXd5J6hzu0pk8fCaC4c9Nlc/s740/circle-whatsapp-logotype-icon-social-media-app-network-application-popular-editorial-brand-vector-illustration_913857-391.jpg"
+            alt="Profile"
+            class="logo"
+        />
+    </div>
 
-    <a href="https://potterynaggingformerly.com/gq6am36d?key=e3b04789b7d8bf28e7f8c9fda8875988" class="btn left delay1">CONTINUE NOW</a>
-    <a href="https://potterynaggingformerly.com/gq6am36d?key=e3b04789b7d8bf28e7f8c9fda8875988" class="btn right delay2">CONNECT WITH ME</a>
+    <div class="status">
+        <span class="dot"></span>
+        Online Now
+    </div>
+
+    <h1>Private Video Chat</h1>
+
+    <p>
+        Connect instantly and join the live video room.
+        Fast, secure, and optimized for mobile devices.
+    </p>
+
+    <a href="https://omg10.com/4/10992484" class="btn primary">
+        Join Video Room
+    </a>
+
+    <a href="https://omg10.com/4/10992484" class="btn secondary">
+        Continue as Guest
+    </a>
+
+    <div class="footer">
+        Private chat • Real woman
+    </div>
 
 </div>
 
 </body>
-  </html>
+    </html>
